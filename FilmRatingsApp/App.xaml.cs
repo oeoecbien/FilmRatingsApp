@@ -27,6 +27,14 @@ public partial class App : Application
         get;
     }
 
+    public static FrameworkElement MainRoot
+    {
+        get
+        {
+            return MainWindow.Content as FrameworkElement;
+        }
+    }
+
     public static T GetService<T>()
         where T : class
     {
@@ -67,6 +75,9 @@ public partial class App : Application
 
             // Core Services
             services.AddSingleton<IFileService, FileService>();
+
+            // Web Service
+            services.AddSingleton<WSService>();
 
             // Views and ViewModels
             services.AddTransient<SettingsViewModel>();
